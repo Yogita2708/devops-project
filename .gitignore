@@ -1,0 +1,32 @@
+# 🔐 Ignore SSH keys (VERY IMPORTANT)
+jenkins-key
+jenkins-key.pub
+*.pem
+
+# 🐳 Docker (optional but safe)
+*.log
+*.pid
+
+# 📁 OS files
+.DS_Store
+Thumbs.db
+
+# 📝 Editor / IDE files
+.vscode/
+.idea/
+
+# 📦 Terraform files (IMPORTANT)
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform.tfvars
+
+# 🔒 Environment files
+.env
+
+# 📂 Node modules (if ever used later)
+node_modules/
+
+# Logs
+logs/
+*.log

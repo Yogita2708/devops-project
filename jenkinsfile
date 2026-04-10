@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+                git 'https://github.com/your-username/your-repo.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t static-site .'
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                sh '''
+                ssh -o StrictHostKeyChecking=no -i jenkins-key ubuntu@13.233.232.224 "
+                docker rm -f static-container || true &&
+                docker run -d -p 4000:80 --name static-container static-site
+                "
+                '''
+            }
+        }
+    }
+}
